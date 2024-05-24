@@ -1,0 +1,13 @@
+# Automatically generated - DO NOT EDIT!
+
+"$schema" = "../../schemas/schema.json"
+
+[[permission]]
+identifier = "allow-cmd-set-theme"
+description = "Enables the cmd_set_theme command without any pre-configured scope."
+commands.allow = ["cmd_set_theme"]
+
+[[permission]]
+identifier = "deny-cmd-set-theme"
+description = "Denies the cmd_set_theme command without any pre-configured scope."
+commands.deny = ["cmd_set_theme"]

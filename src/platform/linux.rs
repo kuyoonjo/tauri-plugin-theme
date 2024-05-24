@@ -1,6 +1,7 @@
 use crate::{save_theme_value, Theme};
 use futures_lite::StreamExt;
-use gtk::{traits::SettingsExt, Settings};
+use gtk::prelude::GtkSettingsExt;
+use gtk::Settings;
 use once_cell::sync::Lazy;
 use tauri::{async_runtime, command, AppHandle, Runtime};
 use tintanum::{SchemePreference, SchemeProxy};
@@ -11,7 +12,7 @@ use tokio::sync::{
 
 #[command]
 pub fn cmd_set_theme<R: Runtime>(app: AppHandle<R>, theme: Theme) -> Result<(), &'static str> {
-    save_theme_value(&app.config(), theme);
+    save_theme_value(&app, theme);
     match theme {
         Theme::Auto => {
             async_runtime::spawn(start_proxy(app));

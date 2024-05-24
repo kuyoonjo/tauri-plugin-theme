@@ -1,0 +1,1 @@
+{"dialog-capability":{"identifier":"dialog-capability","description":"tauri-plugin-dialog","local":true,"windows":["*"],"permissions":["dialog:allow-message"]},"theme-capability":{"identifier":"theme-capability","description":"tauri-plugin-theme","local":true,"windows":["*"],"permissions":["theme:default"]}}

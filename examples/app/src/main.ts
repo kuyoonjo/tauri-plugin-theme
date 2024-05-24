@@ -1,4 +1,4 @@
-import { getTheme, setTheme, Theme } from "@kuyoonjo/tauri-plugin-theme-api";
+import { getTheme, setTheme, Theme } from "@kuyoonjo/tauri-plugin-theme-v2";
 
 document.getElementById("auto")!.onclick = () => setTheme(Theme.Auto);
 document.getElementById("light")!.onclick = () => setTheme(Theme.Light);

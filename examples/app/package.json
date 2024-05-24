@@ -8,11 +8,11 @@
     "build": "tauri build"
   },
   "dependencies": {
-    "@tauri-apps/api": "^1.5.1",
-    "@kuyoonjo/tauri-plugin-theme-api": "link:../../"
+    "@tauri-apps/api": "^2.0.0-beta.12",
+    "@kuyoonjo/tauri-plugin-theme-v2": "link:../../"
   },
   "devDependencies": {
-    "@tauri-apps/cli": "^1.5.6",
+    "@tauri-apps/cli": "^2.0.0-beta.18",
     "typescript": "^5.2.2",
     "vite": "^4.5.0"
   }
