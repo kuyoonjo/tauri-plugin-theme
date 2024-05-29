@@ -1,27 +1,26 @@
-# tauri-plugin-theme-v1
+# tauri-plugin-appearance
 
-Dynamically change Tauri App theme
+Dynamically change Tauri v2 App theme
 
 ## Install
 
 ```bash
-cargo add tauri-plugin-theme-v1
+cargo add tauri-plugin-appearance
 ```
 
 ```rust
-use tauri_plugin_theme_v1::ThemePlugin;
 
 let mut ctx = tauri::generate_context!();
 tauri::Builder::default()
     // Init plugin and auto restore window theme !!!
-    .plugin(ThemePlugin::init(ctx.config_mut()))
+    .plugin(tauri_plugin_appearance::init(ctx.config_mut()))
     ...
 ```
 
 ## Usage
 
 ```javascript
-import { getTheme, setTheme, Theme } from "@kuyoonjo/tauri-plugin-theme-api";
+import { getTheme, setTheme, Theme } from "@kuyoonjo/tauri-plugin-appearance";
 
 await setTheme(Theme.Auto);
 await setTheme(Theme.Light);
@@ -34,48 +33,73 @@ const theme = await getTheme();
 ```rust
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
-use tauri_plugin_theme_v1::{ThemePlugin, get_theme, set_theme, Theme};
-use tauri::{CustomMenuItem, Manager, Menu, Submenu};
+use tauri::menu::{
+    CheckMenuItemBuilder, MenuItemKind, PredefinedMenuItem, SubmenuBuilder, WINDOW_SUBMENU_ID,
+};
+use tauri_plugin_appearance::{get_theme, set_theme, Theme};
 
 fn main() {
-    let mut menu = Menu::new();    
-    let theme_auto = CustomMenuItem::new("theme_auto".to_string(), "Auto");
-    let theme_light = CustomMenuItem::new("theme_light".to_string(), "Light");
-    let theme_dark = CustomMenuItem::new("theme_dark".to_string(), "Dark");
-    let theme_get = CustomMenuItem::new("theme_get".to_string(), "Get");
-    menu = menu
-    .add_submenu(Submenu::new(
-        "Theme",
-        Menu::new()
-            .add_item(theme_auto)
-            .add_item(theme_light)
-            .add_item(theme_dark)
-            .add_item(theme_get),
-    ));
     let mut ctx = tauri::generate_context!();
     tauri::Builder::default()
-        .menu(menu)
-        .on_menu_event(|event| match event.menu_item_id() {
-            "theme_auto" => {
-                let _ = set_theme(event.window().app_handle(), Theme::Auto);
+        .plugin(tauri_plugin_appearance::init(ctx.config_mut()))
+        .setup(|app| {
+            if let Some(menu) = app.menu() {
+                if let Some(MenuItemKind::Submenu(window)) = menu.get(WINDOW_SUBMENU_ID) {
+                    let theme_menu = SubmenuBuilder::with_id(app, "theme", "Theme").build()?;
+                    let theme_auto =
+                        CheckMenuItemBuilder::with_id("theme_auto", "Auto").build(app)?;
+                    let theme_light =
+                        CheckMenuItemBuilder::with_id("theme_light", "Light").build(app)?;
+                    let theme_dark =
+                        CheckMenuItemBuilder::with_id("theme_dark", "Dark").build(app)?;
+                    theme_auto.set_checked(false)?;
+                    theme_light.set_checked(false)?;
+                    theme_dark.set_checked(false)?;
+                    theme_menu.append(&theme_auto)?;
+                    theme_menu.append(&theme_light)?;
+                    theme_menu.append(&theme_dark)?;
+                    window.insert(&theme_menu, 2).unwrap();
+                    let separator = PredefinedMenuItem::separator(app)?;
+                    window.insert(&separator, 2).unwrap();
+
+                    let theme = get_theme(app.handle());
+                    match theme {
+                        Theme::Light => {
+                            theme_light.set_checked(true)?;
+                        }
+                        Theme::Dark => {
+                            theme_dark.set_checked(true)?;
+                        }
+                        _ => {
+                            theme_auto.set_checked(true)?;
+                        }
+                    }
+
+                    app.on_menu_event(move |app, event| {
+                        if event.id() == theme_auto.id() {
+                            set_theme(app.clone(), Theme::Auto).unwrap();
+                            theme_auto.set_checked(true).unwrap();
+                            theme_light.set_checked(false).unwrap();
+                            theme_dark.set_checked(false).unwrap();
+                        } else if event.id() == theme_light.id() {
+                            set_theme(app.clone(), Theme::Light).unwrap();
+                            theme_auto.set_checked(false).unwrap();
+                            theme_light.set_checked(true).unwrap();
+                            theme_dark.set_checked(false).unwrap();
+                        } else if event.id() == theme_dark.id() {
+                            set_theme(app.clone(), Theme::Dark).unwrap();
+                            theme_auto.set_checked(false).unwrap();
+                            theme_light.set_checked(false).unwrap();
+                            theme_dark.set_checked(true).unwrap();
+                        }
+                    });
+                }
             }
-            "theme_light" => {
-                let _ = set_theme(event.window().app_handle(), Theme::Light);
-            }
-            "theme_dark" => {
-                let _ = set_theme(event.window().app_handle(), Theme::Dark);
-            }
-            "theme_get" => {
-                let theme = get_theme(event.window().app_handle());
-                println!("{:#?}", theme);
-            }
-            _ => {}
+            Ok(())
         })
-        .plugin(ThemePlugin::init(ctx.config_mut()))
         .run(ctx)
         .expect("error while running tauri application");
 }
-
 ```
 
 ## Support
