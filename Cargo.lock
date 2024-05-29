@@ -3617,7 +3617,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "tauri-plugin-theme"
+name = "tauri-plugin-appearance"
 version = "0.4.0"
 dependencies = [
  "cocoa",

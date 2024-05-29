@@ -6,8 +6,8 @@ use std::fs;
 use tauri::plugin::{Builder, TauriPlugin};
 use tauri::{command, generate_handler, AppHandle, Config, Manager, Runtime};
 
-const PLUGIN_NAME: &str = "theme";
-const CONFIG_FILENAME: &str = "tauri-plugin-theme";
+const PLUGIN_NAME: &str = "appearance";
+const CONFIG_FILENAME: &str = "tauri-plugin-appearance";
 const ERROR_MESSAGE: &str = "Get app config dir failed";
 
 #[cfg(target_os = "macos")]

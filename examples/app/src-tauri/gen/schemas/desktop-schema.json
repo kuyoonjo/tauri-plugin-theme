@@ -248,6 +248,41 @@
           ]
         },
         {
+          "description": "appearance:default -> Allows All",
+          "type": "string",
+          "enum": [
+            "appearance:default"
+          ]
+        },
+        {
+          "description": "appearance:allow-cmd-get-theme -> Enables the cmd_get_theme command without any pre-configured scope.",
+          "type": "string",
+          "enum": [
+            "appearance:allow-cmd-get-theme"
+          ]
+        },
+        {
+          "description": "appearance:allow-cmd-set-theme -> Enables the cmd_set_theme command without any pre-configured scope.",
+          "type": "string",
+          "enum": [
+            "appearance:allow-cmd-set-theme"
+          ]
+        },
+        {
+          "description": "appearance:deny-cmd-get-theme -> Denies the cmd_get_theme command without any pre-configured scope.",
+          "type": "string",
+          "enum": [
+            "appearance:deny-cmd-get-theme"
+          ]
+        },
+        {
+          "description": "appearance:deny-cmd-set-theme -> Denies the cmd_set_theme command without any pre-configured scope.",
+          "type": "string",
+          "enum": [
+            "appearance:deny-cmd-set-theme"
+          ]
+        },
+        {
           "type": "string",
           "enum": [
             "dialog:default"
@@ -1034,41 +1069,6 @@
           "type": "string",
           "enum": [
             "resources:deny-close"
-          ]
-        },
-        {
-          "description": "theme:default -> Allows All",
-          "type": "string",
-          "enum": [
-            "theme:default"
-          ]
-        },
-        {
-          "description": "theme:allow-cmd-get-theme -> Enables the cmd_get_theme command without any pre-configured scope.",
-          "type": "string",
-          "enum": [
-            "theme:allow-cmd-get-theme"
-          ]
-        },
-        {
-          "description": "theme:allow-cmd-set-theme -> Enables the cmd_set_theme command without any pre-configured scope.",
-          "type": "string",
-          "enum": [
-            "theme:allow-cmd-set-theme"
-          ]
-        },
-        {
-          "description": "theme:deny-cmd-get-theme -> Denies the cmd_get_theme command without any pre-configured scope.",
-          "type": "string",
-          "enum": [
-            "theme:deny-cmd-get-theme"
-          ]
-        },
-        {
-          "description": "theme:deny-cmd-set-theme -> Denies the cmd_set_theme command without any pre-configured scope.",
-          "type": "string",
-          "enum": [
-            "theme:deny-cmd-set-theme"
           ]
         },
         {

@@ -9,13 +9,13 @@ export enum Theme {
 }
 
 export async function setTheme(theme: Theme) {
-  await invoke("plugin:theme|cmd_set_theme", {
+  await invoke("plugin:appearance|cmd_set_theme", {
     theme,
   });
   const p = await platform();
   if (p === 'windows') {
     const v = await version();
-    // if (v < '10.0.22000') {
+    if (v < '10.0.22000') {
       for(const w of getAll()) {
         const isMaximized = await w.isMaximized();
         if (isMaximized) {
@@ -29,11 +29,11 @@ export async function setTheme(theme: Theme) {
           await w.setSize(size);
         }
       }
-    // }
+    }
   }
 };
 
 export async function getTheme() {
-  const theme = await invoke("plugin:theme|cmd_get_theme");
+  const theme = await invoke("plugin:appearance|cmd_get_theme");
   return theme as Theme;
 };

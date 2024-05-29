@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@tauri-apps/api": "^2.0.0-beta.12",
-    "@kuyoonjo/tauri-plugin-theme-v2": "link:../../"
+    "@kuyoonjo/tauri-plugin-appearance": "link:../../"
   },
   "devDependencies": {
     "@tauri-apps/cli": "^2.0.0-beta.18",

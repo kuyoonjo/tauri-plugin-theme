@@ -1,6 +1,6 @@
 {
-  "name": "@kuyoonjo/tauri-plugin-theme-api",
-  "version": "0.2.0",
+  "name": "@kuyoonjo/tauri-plugin-appearance",
+  "version": "0.4.0",
   "description": "Dynamically change Tauri App theme",
   "type": "module",
   "files": [

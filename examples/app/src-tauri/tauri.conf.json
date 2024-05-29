@@ -1,7 +1,7 @@
 {
   "productName": "example",
   "version": "0.0.0",
-  "identifier": "tauri.plugin.theme",
+  "identifier": "tauri.plugin.appearance",
   "build": {
     "beforeDevCommand": "pnpm dev:web",
     "beforeBuildCommand": "pnpm build:web",
@@ -29,7 +29,7 @@
       {
         "fullscreen": false,
         "resizable": true,
-        "title": "tauri-plugin-theme",
+        "title": "tauri-plugin-appearance",
         "width": 800,
         "height": 600
       }

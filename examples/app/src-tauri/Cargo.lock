@@ -1065,9 +1065,9 @@ dependencies = [
  "serde_json",
  "tauri",
  "tauri-build",
+ "tauri-plugin-appearance",
  "tauri-plugin-dialog",
  "tauri-plugin-os",
- "tauri-plugin-theme",
 ]
 
 [[package]]
@@ -3772,6 +3772,22 @@ dependencies = [
 ]
 
 [[package]]
+name = "tauri-plugin-appearance"
+version = "0.4.0"
+dependencies = [
+ "cocoa",
+ "futures-lite 2.0.0",
+ "gtk",
+ "once_cell",
+ "serde",
+ "tauri",
+ "tauri-plugin",
+ "tintanum",
+ "tokio",
+ "windows-sys 0.52.0",
+]
+
+[[package]]
 name = "tauri-plugin-dialog"
 version = "2.0.0-beta.7"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -3824,23 +3840,6 @@ dependencies = [
  "tauri",
  "tauri-plugin",
  "thiserror",
-]
-
-[[package]]
-name = "tauri-plugin-theme"
-version = "0.4.0"
-dependencies = [
- "cocoa",
- "dirs-next",
- "futures-lite 2.0.0",
- "gtk",
- "once_cell",
- "serde",
- "tauri",
- "tauri-plugin",
- "tintanum",
- "tokio",
- "windows-sys 0.52.0",
 ]
 
 [[package]]
