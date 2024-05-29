@@ -8,8 +8,9 @@ use tauri_plugin_theme::{get_theme, set_theme, Theme};
 fn main() {
     let mut ctx = tauri::generate_context!();
     tauri::Builder::default()
-        .plugin(tauri_plugin_theme::init(ctx.config_mut()))
+        .plugin(tauri_plugin_os::init())
         .plugin(tauri_plugin_dialog::init())
+        .plugin(tauri_plugin_theme::init(ctx.config_mut()))
         .setup(|app| {
             if let Some(menu) = app.menu() {
                 if let Some(MenuItemKind::Submenu(window)) = menu.get(WINDOW_SUBMENU_ID) {

@@ -1,12 +1,12 @@
 use crate::{save_theme_value, Theme};
-use tauri::{command, AppHandle, Runtime};
+use tauri::{command, AppHandle, Manager, Runtime};
 use windows_sys::Win32::Graphics::Dwm::*;
 use windows_sys::Win32::Foundation::*;
 
 #[command]
 pub fn cmd_set_theme<R: Runtime>(app: AppHandle<R>, theme: Theme) -> Result<(), &'static str> {
     save_theme_value(&app, theme);
-    for window in app.windows().values() {
+    for window in app.webview_windows().values() {
         unsafe {
             let handle = window.hwnd().unwrap().0;
             let val: Option<BOOL> = match theme {

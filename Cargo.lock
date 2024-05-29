@@ -3621,7 +3621,6 @@ name = "tauri-plugin-theme"
 version = "0.4.0"
 dependencies = [
  "cocoa",
- "dirs-next",
  "futures-lite 2.3.0",
  "gtk",
  "once_cell",

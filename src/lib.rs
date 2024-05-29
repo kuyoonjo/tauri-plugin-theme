@@ -36,7 +36,7 @@ pub fn init<R: Runtime>(_config: &mut Config) -> TauriPlugin<R> {
 }
 
 #[cfg(target_os = "windows")]
-pub fn init<R: Runtime>(config: &mut Config) -> TauriPlugin<R> {
+pub fn init<R: Runtime>(_config: &mut Config) -> TauriPlugin<R> {
     Builder::new(PLUGIN_NAME)
         .invoke_handler(generate_handler![cmd_get_theme, cmd_set_theme])
         .on_event(|app, e| {
@@ -80,19 +80,6 @@ impl ToString for Theme {
             Theme::Dark => "dark".into(),
         }
     }
-}
-
-#[cfg(target_os = "windows")]
-fn saved_theme_value_from_config(config: &Config) -> Theme {
-    if let Some(dir) = dirs_next::config_dir() {
-        let p = dir
-            .join(&config.identifier)
-            .join(CONFIG_FILENAME);
-        return fs::read_to_string(p)
-            .map(Theme::from)
-            .unwrap_or(Theme::Auto);
-    }
-    Theme::Auto
 }
 
 pub(crate) fn saved_theme_value<R: Runtime>(app: &AppHandle<R>) -> Theme {
