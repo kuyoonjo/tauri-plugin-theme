@@ -1,6 +1,6 @@
 [package]
 name = "tauri-plugin-appearance"
-version = "0.4.0"
+version = "0.5.0"
 authors = ["wyhaya", "kuyoonjo"]
 edition = "2021"
 license = "MIT"
