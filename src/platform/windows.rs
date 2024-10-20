@@ -22,7 +22,7 @@ pub fn cmd_set_theme<R: Runtime>(app: AppHandle<R>, theme: Theme) -> Result<(), 
             };
             if let Some(value) = val {
                 let attribute = DWMWA_USE_IMMERSIVE_DARK_MODE;
-                DwmSetWindowAttribute(handle, attribute as u32, &value as *const _ as *const _, std::mem::size_of::<BOOL>() as u32);
+                DwmSetWindowAttribute(handle as isize, attribute as u32, &value as *const _ as *const _, std::mem::size_of::<BOOL>() as u32);
             }
         }
     }

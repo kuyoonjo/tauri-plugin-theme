@@ -1,7 +1,68 @@
-| Permission | Description |
-|------|-----|
-|`allow-cmd-get-theme`|Enables the cmd_get_theme command without any pre-configured scope.|
-|`deny-cmd-get-theme`|Denies the cmd_get_theme command without any pre-configured scope.|
-|`allow-cmd-set-theme`|Enables the cmd_set_theme command without any pre-configured scope.|
-|`deny-cmd-set-theme`|Denies the cmd_set_theme command without any pre-configured scope.|
-|`default`|Allows All|
+## Default Permission
+
+Allows All
+
+- `allow-cmd-get-theme`
+- `allow-cmd-set-theme`
+
+## Permission Table
+
+<table>
+<tr>
+<th>Identifier</th>
+<th>Description</th>
+</tr>
+
+
+<tr>
+<td>
+
+`appearance:allow-cmd-get-theme`
+
+</td>
+<td>
+
+Enables the cmd_get_theme command without any pre-configured scope.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+`appearance:deny-cmd-get-theme`
+
+</td>
+<td>
+
+Denies the cmd_get_theme command without any pre-configured scope.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+`appearance:allow-cmd-set-theme`
+
+</td>
+<td>
+
+Enables the cmd_set_theme command without any pre-configured scope.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+`appearance:deny-cmd-set-theme`
+
+</td>
+<td>
+
+Denies the cmd_set_theme command without any pre-configured scope.
+
+</td>
+</tr>
+</table>
