@@ -1,6 +1,6 @@
 import { invoke } from "@tauri-apps/api/core";
 import { platform, version } from '@tauri-apps/plugin-os';
-import { getAll } from "@tauri-apps/api/window";
+import { getAllWindows } from "@tauri-apps/api/window";
 
 export enum Theme {
   Auto = "auto",
@@ -16,7 +16,7 @@ export async function setTheme(theme: Theme) {
   if (p === 'windows') {
     const v = await version();
     if (v < '10.0.22000') {
-      for(const w of getAll()) {
+      for(const w of await getAllWindows()) {
         const isMaximized = await w.isMaximized();
         if (isMaximized) {
           await w.unmaximize();
