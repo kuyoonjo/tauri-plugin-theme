@@ -1,5 +1,5 @@
 {
-  "$schema": "./schemas/desktop-schema.json",
+  "$schema": "../gen/schemas/desktop-schema.json",
   "identifier": "appearance-capability",
   "description": "tauri-plugin-appearance",
   "windows": ["*"],

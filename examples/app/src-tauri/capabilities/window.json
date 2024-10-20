@@ -1,13 +1,13 @@
 {
-  "$schema": "./schemas/desktop-schema.json",
+  "$schema": "../gen/schemas/desktop-schema.json",
   "identifier": "window-capability",
   "description": "api/window",
   "windows": ["*"],
   "permissions": [
-    "window:allow-is-maximized",
-    "window:allow-maximize",
-    "window:allow-unmaximize",
-    "window:allow-inner-size",
-    "window:allow-set-size"
+    "core:window:allow-is-maximized",
+    "core:window:allow-maximize",
+    "core:window:allow-unmaximize",
+    "core:window:allow-inner-size",
+    "core:window:allow-set-size"
   ]
 }
